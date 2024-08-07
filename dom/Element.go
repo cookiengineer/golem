@@ -50,3 +50,16 @@ func (element *Element) HasAttributes() bool {
 	return result
 
 }
+
+func (element *Element) QuerySelector(query string) Element {
+}
+
+func (element *Element) QuerySelectorAll(query string) []Element {
+
+	var result []Element
+
+	// TODO
+
+	return result
+
+}

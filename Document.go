@@ -17,6 +17,9 @@ type document struct {
 	Value js.Value `json:"value"`
 }
 
+func (doc *document) QuerySelector(query string) Element {
+}
+
 func (doc *document) QuerySelectorAll(query string) []Element {
 
 	var result []Element
