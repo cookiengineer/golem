@@ -2,7 +2,7 @@ module example
 
 go 1.22.5
 
-replace godom => ../../../godom
+replace golem => ../../source
 
-require godom v0.0.0
+require golem v0.0.0
 
