@@ -1,9 +1,13 @@
 
 # TODO
 
+- Window
+- Window.OnDOMContentLoaded()
+
+- Document
+
 - dom/Element
-- dom/Window
-- dom/Document
+- dom/Event
 
 - canvas/Canvas
 - canvas/CanvasRenderingContext2D

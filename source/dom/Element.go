@@ -5,11 +5,11 @@ import "syscall/js"
 import "fmt"
 
 type Element struct {
-	id          string            `json:"id"`
-	className   string            `json:"className"`
-	attributes  map[string]string `json:"attributes"`
-	textContent string            `json:"textContent"`
-	innerHTML   string            `json:"innerHTML"`
+	Id          string            `json:"id"`
+	ClassName   string            `json:"className"`
+	Attributes  map[string]string `json:"attributes"`
+	TextContent string            `json:"textContent"`
+	InnerHTML   string            `json:"innerHTML"`
 	Value       *js.Value         `json:"value"`
 }
 
@@ -17,20 +17,20 @@ func ToElement(value js.Value) Element {
 
 	var element Element
 
-	element.id = value.Get("id").String()
-	element.className = value.Get("className").String()
-	element.textContent = value.Get("textContent").String()
-	element.innerHTML = value.Get("innerHTML").String()
+	element.Id = value.Get("id").String()
+	element.ClassName = value.Get("className").String()
+	element.TextContent = value.Get("textContent").String()
+	element.InnerHTML = value.Get("innerHTML").String()
 	element.Value = &value
 
-	element.attributes = make(map[string]string)
-	element.Attributes()
+	element.Attributes = make(map[string]string)
+	element.RefreshAttributes()
 
 	return element
 
 }
 
-func (element *Element) Attributes() map[string]string {
+func (element *Element) RefreshAttributes() {
 
 	attributes := element.Value.Get("attributes")
 
@@ -46,7 +46,15 @@ func (element *Element) Attributes() map[string]string {
 	// TODO: Get Attributes again via JS Syscall
 	// TODO: Update element.attributes map
 
-	return element.attributes
+}
+
+func (element *Element) GetAttribute(name string) string {
+
+	var value string
+
+	// TODO: Get attribute via JS Syscall
+
+	return value
 
 }
 
@@ -57,7 +65,7 @@ func (element *Element) SetAttribute(name string, value string) error {
 	err0 := utils.ValidateXMLName(name)
 
 	if err0 == nil {
-		element.attributes[name] = value
+		element.Attributes[name] = value
 		element.Value.Call("setAttribute", name, value)
 	} else {
 		err = err0
