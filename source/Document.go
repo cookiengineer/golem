@@ -26,40 +26,32 @@ func (doc *document) AddEventListener(typ dom.EventType, listener dom.EventListe
 
 	var result bool = false
 
-	callback := js.FuncOf(func(this js.Value, args []js.Value) any {
+	wrapped_type := js.ValueOf(string(typ))
+	wrapped_callback := js.FuncOf(func(this js.Value, args []js.Value) any {
 
 		fmt.Println(typ + " event fired!")
 
-		// if len(args) > 0 {
+		if len(args) > 0 {
 
-		// 	unwrapped_event := args[0]
+			event := args[0]
 
-		// 	if !unwrapped_event.IsNull() && !unwrapped_event.IsUndefined() {
+			if !event.IsNull() && !event.IsUndefined() {
 
-		// 		event := dom.ToEvent(unwrapped_event)
+				wrapped_event := dom.ToEvent(event)
 
-		// 		fmt.Println(unwrapped_event)
-		// 		fmt.Println(event)
+				fmt.Println(event)
+				fmt.Println(wrapped_event)
 
-		// 	}
+			}
 
-		// }
+		}
 
 		return nil
 
 	})
+	wrapped_capture := js.ValueOf(capture)
 
-	if 1 == 2 {
-		fmt.Println(callback)
-	}
-
-	doc.Value.Call("addEventListener", js.ValueOf(string(typ)), callback, js.ValueOf(capture))
-
-	// js.FuncOf(func(this js.Value, args []js.Value) any {
-	// 	fmt.Println("WTF")
-	// 	return nil
-	// }), js.ValueOf(true))
-	// js.ValueOf(options))
+	doc.Value.Call("addEventListener", wrapped_type, wrapped_callback, wrapped_capture)
 
 	return result
 

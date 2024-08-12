@@ -3,6 +3,7 @@ package main
 import "golem"
 import "golem/dom"
 import "fmt"
+import "time"
 
 func main() {
 
@@ -17,13 +18,15 @@ func main() {
 
 	// li.SetAttribute("data-active", "yes")
 
-	fmt.Println("main()")
-
-	golem.Document.AddEventListener("DOMContentLoaded", dom.ToEventListener(func(event dom.Event) {
+	golem.Document.AddEventListener("click", dom.ToEventListener(func(event dom.Event) {
 
 		fmt.Println(event.Target)
 
 	}, golem.Document.Value), true)
 
+	for true {
+		// Do Nothing
+		time.Sleep(1 * time.Second)
+	}
 
 }
