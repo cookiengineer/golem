@@ -5,9 +5,10 @@ import "syscall/js"
 var event_listener_id uint = 0
 
 type EventListener struct {
-	id       uint                  `json:"id"`
-	callback EventListenerCallback `json:"callback"`
-	scope    *js.Value             `json:"scope"`
+	Id       uint                  `json:"id"`
+	Callback EventListenerCallback `json:"callback"`
+	Function *js.Func              `json:"function"`
+	Scope    *js.Value             `json:"scope"`
 }
 
 type EventListenerCallback func(Event)
@@ -16,13 +17,13 @@ func ToEventListener(callback EventListenerCallback, scope *js.Value) EventListe
 
 	var listener EventListener
 
-	listener.id = event_listener_id
-	listener.callback = callback
+	listener.Id = event_listener_id
+	listener.Callback = callback
 
 	if scope != nil {
-		listener.scope = scope
+		listener.Scope = scope
 	} else {
-		listener.scope = nil
+		listener.Scope = nil
 	}
 
 	event_listener_id += 1

@@ -1,19 +1,45 @@
 
 # TODO
 
+- Centralized Event Listener that delegates events (due to WebASM specification bug)
+- Delegate `click` events
+- Delegate `touch` events
+- Delegate `key` events?
+
 - Window
-- Window.OnDOMContentLoaded()
+- Closed bool
+- Close()
+- Confirm()
+- Focus() bool
+- InnerWidth
+- InnerHeight
+- MoveBy()
+- MoveTo()
+- ResizeBy()
+- ResizeTo()
+- Screen {}
+- ScrollBy()
+- ScrollTo()
+- ScrollX
+- ScrollY
 
-- Document
+- Navigator
 
-- dom/Element
-- dom/Event
+- SetImmediate()
+- SetInterval()
+- SetTimeout()
+- TextDecoder
+- TextEncoder
+- RequestAnimationFrame
+- CancelAnimationFrame
 
 - canvas/Canvas
 - canvas/CanvasRenderingContext2D
 
 - storage/LocalStorage
 - storage/SessionStorage
+
+- form/FormData
 
 - form/Button
 - form/Input

@@ -1,9 +1,9 @@
-package utils
+package dom
 
 import "errors"
 import "strconv"
 
-func ValidateXMLName(name string) error {
+func validateXMLName(name string) error {
 
 	var err error = nil
 
@@ -47,11 +47,11 @@ func ValidateXMLName(name string) error {
 			}
 
 			if valid == false {
-				err = errors.New("InvalidCharacterError: character " + strconv.Itoa(n+1) + " is invalid")
+				err = errors.New("InvalidCharacterError: character " + strconv.Itoa(n) + " is invalid")
 			}
 
 		} else {
-			err = errors.New("InvalidCharacterError: First character is invalid")
+			err = errors.New("InvalidCharacterError: character 0 invalid")
 		}
 
 	}

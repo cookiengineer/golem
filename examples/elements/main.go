@@ -2,7 +2,7 @@ package main
 
 import "golem"
 import "golem/dom"
-import "fmt"
+import "strconv"
 import "time"
 
 func main() {
@@ -18,15 +18,41 @@ func main() {
 
 	// li.SetAttribute("data-active", "yes")
 
-	golem.Document.AddEventListener("click", dom.ToEventListener(func(event dom.Event) {
+	var count int = 0
 
-		fmt.Println(event.Target)
 
-	}, golem.Document.Value), true)
+	var listener = dom.ToEventListener(func(event dom.Event) {
+
+		target := event.Target
+
+		if target.Id == "clickable" {
+
+			if target.ClassName == "active" {
+				target.SetInnerHTML("Click me again! (" + strconv.Itoa(count) + ")")
+				target.SetClassName("")
+			} else {
+				target.SetClassName("active")
+				target.SetInnerHTML("Click me again! (" + strconv.Itoa(count) + ")")
+				count++
+			}
+
+		}
+
+	}, golem.Document.Value)
+
+	golem.Document.AddEventListener("click", listener)
 
 	for true {
+
+		if count > 3 {
+			golem.Document.RemoveEventListener("click", &listener)
+			golem.Document.QuerySelector("#clickable").SetInnerHTML("Stop clicking me!")
+			count = 0
+		}
+
 		// Do Nothing
 		time.Sleep(1 * time.Second)
+
 	}
 
 }
