@@ -6,23 +6,6 @@
 - Delegate `touch` events
 - Delegate `key` events?
 
-- Window
-- Closed bool
-- Close()
-- Confirm()
-- Focus() bool
-- InnerWidth
-- InnerHeight
-- MoveBy()
-- MoveTo()
-- ResizeBy()
-- ResizeTo()
-- Screen {}
-- ScrollBy()
-- ScrollTo()
-- ScrollX
-- ScrollY
-
 - Navigator
 
 - SetImmediate()
