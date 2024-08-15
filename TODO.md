@@ -1,26 +1,45 @@
 
 # TODO
 
-- Centralized Event Listener that delegates events (due to WebASM specification bug)
-- Delegate `click` events
-- Delegate `touch` events
-- Delegate `key` events?
+[Navigator Object](https://html.spec.whatwg.org/multipage/system-state.html#the-navigator-object):
 
 - Navigator
 
-- TextDecoder
-- TextEncoder
-- RequestAnimationFrame
-- CancelAnimationFrame
+[History API](https://html.spec.whatwg.org/multipage/nav-history-apis.html#the-history-interface):
 
-- canvas/Canvas
-- canvas/CanvasRenderingContext2D
+- [ ] history/History
+- [ ] Back()
+- [ ] Forward()
+- [ ] Go()
+- [ ] PushState()
+- [ ] ReplaceState()
 
-- form/FormData
+[Location API](https://html.spec.whatwg.org/multipage/nav-history-apis.html#navigation-api):
 
-- form/Button
-- form/Input
-- form/Textarea
-- form/Select
-- form/Option
+- [ ] history/Location
+
+- [ ] canvas/Canvas
+- [ ] canvas/CanvasRenderingContext2D
+- [ ] canvas/CanvasGradient
+- [ ] canvas/CanvasPattern
+- [ ] canvas/ImageBitmap
+- [ ] canvas/ImageData
+- [ ] canvas/TextMetrics
+- [ ] canvas/OffscreenCanvas
+- [ ] canvas/OffscreenCanvasRenderingContext2D
+- [ ] canvas/ImageBitmapRenderingContext
+
+[Encoders and Decoders](https://encoding.spec.whatwg.org/#encoders-and-decoders):
+
+- [ ] encoding/TextDecoder
+- [ ] encoding/TextEncoder
+
+Web Forms:
+
+- [ ] forms/Button
+- [ ] forms/FormData
+- [ ] forms/Input
+- [ ] forms/Option
+- [ ] forms/Select
+- [ ] forms/Textarea
 
