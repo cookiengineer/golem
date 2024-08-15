@@ -1,6 +1,5 @@
 package dom
 
-import "golem/types"
 import "syscall/js"
 
 type Event struct {
@@ -20,13 +19,13 @@ func ToEvent(value js.Value) Event {
 
 	var event Event
 
-	event.Bubbles = types.ToBoolean(value.Get("bubbles"))
-	event.Cancelable = types.ToBoolean(value.Get("cancelable"))
-	event.Composed = types.ToBoolean(value.Get("composed"))
-	event.DefaultPrevented = types.ToBoolean(value.Get("defaultPrevented"))
-	event.EventPhase = EventPhase(types.ToInt(value.Get("eventPhase")))
-	event.IsTrusted = types.ToBoolean(value.Get("isTrusted"))
-	event.Type = EventType(types.ToString(value.Get("type")))
+	event.Bubbles = value.Get("bubbles").Bool()
+	event.Cancelable = value.Get("cancelable").Bool()
+	event.Composed = value.Get("composed").Bool()
+	event.DefaultPrevented = value.Get("defaultPrevented").Bool()
+	event.EventPhase = EventPhase(value.Get("eventPhase").Int())
+	event.IsTrusted = value.Get("isTrusted").Bool()
+	event.Type = EventType(value.Get("type").String())
 
 	target := ToElement(value.Get("target"))
 

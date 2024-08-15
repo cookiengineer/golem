@@ -99,7 +99,8 @@ func (doc *document) RemoveEventListener(filter_type dom.EventType, listener *do
 				listener := listeners[index]
 				wrapped_type := js.ValueOf(string(filter_type))
 				wrapped_callback := *listener.Function
-				doc.Value.Call("removeEventListener", wrapped_type, wrapped_callback)
+				wrapped_capture := js.ValueOf(true)
+				doc.Value.Call("removeEventListener", wrapped_type, wrapped_callback, wrapped_capture)
 
 				doc.listeners[filter_type] = append(doc.listeners[filter_type][:index], doc.listeners[filter_type][index+1:]...)
 
@@ -120,7 +121,8 @@ func (doc *document) RemoveEventListener(filter_type dom.EventType, listener *do
 				listener := listeners[l]
 				wrapped_type := js.ValueOf(string(filter_type))
 				wrapped_callback := *listener.Function
-				doc.Value.Call("removeEventListener", wrapped_type, wrapped_callback)
+				wrapped_capture := js.ValueOf(true)
+				doc.Value.Call("removeEventListener", wrapped_type, wrapped_callback, wrapped_capture)
 
 			}
 
