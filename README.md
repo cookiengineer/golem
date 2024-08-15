@@ -31,7 +31,7 @@ stateless HTML in both Web Pages and Web Views.
 - Web Clients are routable via a `map[URL]struct` for each supported route
 
 
-# Implementations
+# Bindings
 
 - [x] [Document](/source/Document.go)
 - [ ] [Screen](/source/Screen.go)

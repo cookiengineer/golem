@@ -7,6 +7,10 @@ type Storage struct {
 	name string `json:"name"`
 }
 
+func (storage *Storage) Clear() {
+    js.Global().Get(storage.name).Call("clear")
+}
+
 func (storage *Storage) GetItem(key string) string {
 
 	var result string
@@ -244,6 +248,10 @@ func (storage *Storage) Length() uint {
 
 	return result
 
+}
+
+func (storage *Storage) RemoveItem(key string) {
+	js.Global().Get(storage.name).Call("removeItem", js.ValueOf(key))
 }
 
 func (storage *Storage) SetItem(key string, value any) {
