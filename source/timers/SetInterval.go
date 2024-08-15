@@ -2,14 +2,13 @@ package timers
 
 import "syscall/js"
 
-type TimeoutCallback func()
-
-func SetInterval(callback TimeoutCallback, millisecond uint) uint {
+func SetInterval(callback func(), milliseconds uint) uint {
 
 	var result uint = 0
 
 	wrapped_callback := js.FuncOf(func(this js.Value, args []js.Value) any {
 		callback()
+		return nil
 	})
 	wrapped_delay := js.ValueOf(milliseconds)
 

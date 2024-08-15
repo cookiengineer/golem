@@ -40,8 +40,8 @@ stateless HTML in both Web Pages and Web Views.
 
 **animations**
 
-- [x] [animations/CancelAnimationFrame(uint)](/source/timers/CancelAnimationFrame.go)
-- [x] [animations/RequestAnimationFrame(func(timestamp float64)) uint](/source/timers/RequestAnimationFrame.go)
+- [x] [animations/CancelAnimationFrame](/source/timers/CancelAnimationFrame.go)
+- [x] [animations/RequestAnimationFrame](/source/timers/RequestAnimationFrame.go)
 
 **dom**
 
@@ -51,11 +51,16 @@ stateless HTML in both Web Pages and Web Views.
 - [x] [dom/EventPhase](/source/dom/EventPhase.go)
 - [x] [dom/EventType](/source/dom/EventType.go)
 
+**storages**
+
+- [x] [storages/LocalStorage](/source/storages/LocalStorage.go)
+- [x] [storages/SessionStorage](/source/storages/SessionStorage.go)
+
 **timers**
 
 - [x] [timers/ClearInterval](/source/timers/ClearInterval.go)
-- [x] [timers/SetInterval](/source/timers/SetInterval.go)
 - [x] [timers/ClearTimeout](/source/timers/ClearTimeout.go)
+- [x] [timers/SetInterval](/source/timers/SetInterval.go)
 - [x] [timers/SetTimeout](/source/timers/SetTimeout.go)
 
 

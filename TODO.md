@@ -8,9 +8,6 @@
 
 - Navigator
 
-- SetImmediate()
-- SetInterval()
-- SetTimeout()
 - TextDecoder
 - TextEncoder
 - RequestAnimationFrame
@@ -18,9 +15,6 @@
 
 - canvas/Canvas
 - canvas/CanvasRenderingContext2D
-
-- storage/LocalStorage
-- storage/SessionStorage
 
 - form/FormData
 
