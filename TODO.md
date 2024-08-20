@@ -4,6 +4,18 @@
 [Navigator Object](https://html.spec.whatwg.org/multipage/system-state.html#the-navigator-object):
 
 - Navigator
+- OnLine
+- [Credentials API](https://developer.mozilla.org/en-US/docs/Web/API/Navigator/credentials)
+- [Geolocation API](https://developer.mozilla.org/en-US/docs/Web/API/Navigator/geolocation)
+- [Keyboard API](https://developer.mozilla.org/en-US/docs/Web/API/Navigator/keyboard)
+- [Language API](https://developer.mozilla.org/en-US/docs/Web/API/Navigator/language)
+- [Permissions API](https://developer.mozilla.org/en-US/docs/Web/API/Navigator/permissions)
+- [Storage API](https://developer.mozilla.org/en-US/docs/Web/API/Navigator/storage)
+- [UserAgent API](https://developer.mozilla.org/en-US/docs/Web/API/Navigator/userAgent)
+- [VirtualKeyBoard API](https://developer.mozilla.org/en-US/docs/Web/API/Navigator/virtualKeyboard)
+- [Vibration API](https://developer.mozilla.org/en-US/docs/Web/API/Navigator/vibrate)
+
+=========
 
 [History API](https://html.spec.whatwg.org/multipage/nav-history-apis.html#the-history-interface):
 
@@ -13,10 +25,6 @@
 - [ ] Go()
 - [ ] PushState()
 - [ ] ReplaceState()
-
-[Location API](https://html.spec.whatwg.org/multipage/nav-history-apis.html#navigation-api):
-
-- [ ] history/Location
 
 - [ ] canvas/Canvas
 - [ ] canvas/CanvasRenderingContext2D
@@ -29,10 +37,14 @@
 - [ ] canvas/OffscreenCanvasRenderingContext2D
 - [ ] canvas/ImageBitmapRenderingContext
 
+=========
+
 [Encoders and Decoders](https://encoding.spec.whatwg.org/#encoders-and-decoders):
 
 - [ ] encoding/TextDecoder
 - [ ] encoding/TextEncoder
+
+=========
 
 Web Forms:
 
