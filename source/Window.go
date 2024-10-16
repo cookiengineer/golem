@@ -36,8 +36,15 @@ func init() {
 		AvailHeight: uint(scr.Get("availHeight").Int()),
 		ColorDepth:  uint(scr.Get("colorDepth").Int()),
 		PixelDepth:  uint(scr.Get("pixelDepth").Int()),
-		IsExtended:  scr.Get("isExtended").Bool(),
+		IsExtended:  false,
 		Orientation: &screen_orientation,
+	}
+
+	// Firefox doesn't expose this in Tracking Protection Mode
+	screen_isextended := scr.Get("isExtended")
+
+	if !screen_isextended.IsUndefined() {
+		screen.IsExtended = screen_isextended.Bool()
 	}
 
 	Window = window{

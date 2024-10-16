@@ -3,8 +3,8 @@
 
 <img align="right" width="128" height="128" src="https://raw.githubusercontent.com/cookiengineer/golem/master/assets/golem.jpg">
 
-Opinionated Web UI framework for Go that is made for
-stateless HTML in both Web Pages and Web Views.
+Opinionated Web UI framework for Go that is made for stateless HTML in both Web Pages
+and Web Views. It bridges the gap between Go, WebAssembly, and Browser APIs.
 
 
 # Opinions
@@ -14,7 +14,6 @@ stateless HTML in both Web Pages and Web Views.
 - Static elements are never removed from the DOM
 - Static elements can have DOM event listeners
 - Elements with an `id` property are static elements
-
 - Dynamic elements can be removed from the DOM
 - Dynamic elements cannot have DOM event listeners
 
@@ -42,8 +41,8 @@ stateless HTML in both Web Pages and Web Views.
 
 **animations**
 
-- [x] [animations/CancelAnimationFrame](/source/timers/CancelAnimationFrame.go)
-- [x] [animations/RequestAnimationFrame](/source/timers/RequestAnimationFrame.go)
+- [x] [animations/CancelAnimationFrame](/source/animations/CancelAnimationFrame.go)
+- [x] [animations/RequestAnimationFrame](/source/animations/RequestAnimationFrame.go)
 
 **dom**
 
@@ -52,6 +51,17 @@ stateless HTML in both Web Pages and Web Views.
 - [x] [dom/EventListener](/source/dom/EventListener.go)
 - [x] [dom/EventPhase](/source/dom/EventPhase.go)
 - [x] [dom/EventType](/source/dom/EventType.go)
+
+**location**
+
+- [x] [location/Location](/source/location/Location.go)
+
+**navigator**
+
+- [x] [navigator/Geolocation](/source/navigator/Geolocation.go)
+- [x] [navigator/GeolocationPosition](/source/navigator/GeolocationPosition.go)
+- [x] [navigator/GeolocationPositionError](/source/navigator/GeolocationPositionError.go)
+- [x] [navigator/GeolocationPositionOptions](/source/navigator/GeolocationPositionOptions.go) [1]
 
 **storages**
 
@@ -64,6 +74,8 @@ stateless HTML in both Web Pages and Web Views.
 - [x] [timers/ClearTimeout](/source/timers/ClearTimeout.go)
 - [x] [timers/SetInterval](/source/timers/SetInterval.go)
 - [x] [timers/SetTimeout](/source/timers/SetTimeout.go)
+
+[1] This feature is implemented, but not supported across all Browsers. It is disabled to prevent WebASM runtime errors that are irrecoverable.
 
 
 # Layouts
