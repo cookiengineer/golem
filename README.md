@@ -1,6 +1,8 @@
 
 # Golem UI
 
+<img align="right" width="128" height="128" src="https://raw.githubusercontent.com/cookiengineer/golem/master/assets/golem.jpg">
+
 Opinionated Web UI framework for Go that is made for
 stateless HTML in both Web Pages and Web Views.
 
