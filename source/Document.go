@@ -73,13 +73,13 @@ func (doc *document) AddEventListener(typ dom.EventType, listener dom.EventListe
 
 }
 
-func (doc *document) RemoveEventListener(filter_type dom.EventType, listener *dom.EventListener) bool {
+func (doc *document) RemoveEventListener(typ dom.EventType, listener *dom.EventListener) bool {
 
 	var result bool = false
 
 	if listener != nil {
 
-		listeners, ok := doc.listeners[filter_type]
+		listeners, ok := doc.listeners[typ]
 
 		if ok == true {
 
@@ -97,12 +97,12 @@ func (doc *document) RemoveEventListener(filter_type dom.EventType, listener *do
 			if index != -1 {
 
 				listener := listeners[index]
-				wrapped_type := js.ValueOf(string(filter_type))
+				wrapped_type := js.ValueOf(string(typ))
 				wrapped_callback := *listener.Function
 				wrapped_capture := js.ValueOf(true)
 				doc.Value.Call("removeEventListener", wrapped_type, wrapped_callback, wrapped_capture)
 
-				doc.listeners[filter_type] = append(doc.listeners[filter_type][:index], doc.listeners[filter_type][index+1:]...)
+				doc.listeners[typ] = append(doc.listeners[typ][:index], doc.listeners[typ][index+1:]...)
 
 				result = true
 
@@ -112,21 +112,21 @@ func (doc *document) RemoveEventListener(filter_type dom.EventType, listener *do
 
 	} else {
 
-		listeners, ok := doc.listeners[filter_type]
+		listeners, ok := doc.listeners[typ]
 
 		if ok == true {
 
 			for l := 0; l < len(listeners); l++ {
 
 				listener := listeners[l]
-				wrapped_type := js.ValueOf(string(filter_type))
+				wrapped_type := js.ValueOf(string(typ))
 				wrapped_callback := *listener.Function
 				wrapped_capture := js.ValueOf(true)
 				doc.Value.Call("removeEventListener", wrapped_type, wrapped_callback, wrapped_capture)
 
 			}
 
-			delete(doc.listeners, filter_type)
+			delete(doc.listeners, typ)
 
 			result = true
 

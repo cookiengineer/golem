@@ -35,7 +35,7 @@ and Web Views. It bridges the gap between Go, WebAssembly, and Browser APIs.
 # Bindings
 
 - [x] [Document](/source/Document.go)
-- [ ] [Screen](/source/Screen.go)
+- [x] [Screen](/source/Screen.go)
 - [x] [ScreenOrientation](/source/ScreenOrientation.go)
 - [x] [Window](/source/Window.go)
 

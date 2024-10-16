@@ -30,6 +30,7 @@ func init() {
 	}
 
 	screen := Screen{
+		listeners:   make(map[dom.EventType][]*dom.EventListener),
 		Width:       uint(scr.Get("width").Int()),
 		Height:      uint(scr.Get("height").Int()),
 		AvailWidth:  uint(scr.Get("availWidth").Int()),
@@ -38,6 +39,7 @@ func init() {
 		PixelDepth:  uint(scr.Get("pixelDepth").Int()),
 		IsExtended:  false,
 		Orientation: &screen_orientation,
+		Value:       &scr,
 	}
 
 	// Firefox doesn't expose this in Tracking Protection Mode
@@ -75,6 +77,15 @@ func init() {
 
 		Window.ScrollX = uint(Window.Value.Get("scrollX").Int())
 		Window.ScrollY = uint(Window.Value.Get("scrollY").Int())
+
+		return nil
+
+	}))
+
+	Window.Screen.Value.Call("addEventListener", "change", js.FuncOf(func(this js.Value, args []js.Value) any {
+
+		Window.Screen.Orientation.Angle = uint(ori.Get("angle").Int())
+		Window.Screen.Orientation.Type = ori.Get("type").String()
 
 		return nil
 
