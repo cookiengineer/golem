@@ -46,6 +46,37 @@
 
 =========
 
+[Web Crypto API](https://developer.mozilla.org/en-US/docs/Web/API/Web_Crypto_API)
+
+- [x] Crypto
+- [ ] SubtleCrypto
+- [ ] CryptoKey
+- [ ] CryptoKeyPair
+
+Crypto Dictionaries
+
+- [ ] AesCbcParams
+- [ ] AesCtrParams
+- [ ] AesGcmParams
+- [ ] AesKeyGenParams
+
+- [ ] EcKeyGenParams
+- [ ] EcKeyImportParams
+- [ ] EcdhKeyDeriveParams
+- [ ] EcdsaParams
+- [ ] HkdfParams
+- [ ] HmacImportParams
+- [ ] HmacKeyGenParams
+- [ ] Pbkdf2Params
+
+- [ ] RsaHashedImportParams
+- [ ] RsaHashedKeyGenparams
+- [ ] RsaOaepParams
+- [ ] RsaPssParams
+
+
+=========
+
 Web Forms:
 
 - [ ] forms/Button

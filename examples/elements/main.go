@@ -1,7 +1,7 @@
 package main
 
-import "golem"
-import "golem/dom"
+import "gooey"
+import "gooey/dom"
 import "strconv"
 import "time"
 
@@ -29,15 +29,15 @@ func main() {
 
 	})
 
-	golem.Document.AddEventListener("click", listener)
+	gooey.Document.AddEventListener("click", listener)
 
 	for true {
 
 		if count > 10 {
 
-			golem.Document.RemoveEventListener("click", &listener)
+			gooey.Document.RemoveEventListener("click", &listener)
 
-			clickable := golem.Document.QuerySelector("#clickable")
+			clickable := gooey.Document.QuerySelector("#clickable")
 			clickable.SetClassName("disabled")
 			clickable.SetInnerHTML("Stop clicking me!")
 

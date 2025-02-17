@@ -1,8 +1,8 @@
 module example
 
-go 1.22.5
+go 1.23.5
 
-replace golem => ../../source
+replace gooey => ../../source
 
-require golem v0.0.0
+require gooey v0.0.0
 

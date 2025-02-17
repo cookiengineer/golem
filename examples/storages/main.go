@@ -1,14 +1,14 @@
 package main
 
-import "golem"
-import "golem/storages"
-import "golem/timers"
+import "gooey"
+import "gooey/storages"
+import "gooey/timers"
 import "strconv"
 import "time"
 
 func main() {
 
-	element := golem.Document.QuerySelector("#seconds")
+	element := gooey.Document.QuerySelector("#seconds")
 
 	var seconds int = 0
 

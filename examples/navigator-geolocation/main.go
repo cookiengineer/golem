@@ -1,17 +1,17 @@
 package main
 
-import "golem"
-import "golem/navigator"
+import "gooey"
+import "gooey/navigator"
 import "strconv"
 import "time"
 
 func main() {
 
-	element_latitude := golem.Document.QuerySelector("#latitude")
-	element_longitude := golem.Document.QuerySelector("#longitude")
-	element_altitude := golem.Document.QuerySelector("#altitude")
-	element_accuracy := golem.Document.QuerySelector("#accuracy")
-	element_error := golem.Document.QuerySelector("#error")
+	element_latitude := gooey.Document.QuerySelector("#latitude")
+	element_longitude := gooey.Document.QuerySelector("#longitude")
+	element_altitude := gooey.Document.QuerySelector("#altitude")
+	element_accuracy := gooey.Document.QuerySelector("#accuracy")
+	element_error := gooey.Document.QuerySelector("#error")
 
 	navigator.Geolocation.GetCurrentPosition(func(position navigator.GeolocationPosition) {
 
