@@ -1,6 +1,6 @@
-package golem
+package gooey
 
-import "golem/dom"
+import "gooey/dom"
 import "syscall/js"
 
 type Screen struct {

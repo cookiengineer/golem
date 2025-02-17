@@ -1,4 +1,4 @@
-package golem
+package gooey
 
 type ScreenOrientation struct {
 	Angle uint   `json:"angle"`
