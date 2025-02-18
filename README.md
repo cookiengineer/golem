@@ -1,7 +1,9 @@
 
 # Gooey
 
-<img align="center" width="256" height="256" src="https://raw.githubusercontent.com/cookiengineer/gooey/master/assets/gooey.jpg">
+<p align="center">
+    <img width="256" height="256" src="https://raw.githubusercontent.com/cookiengineer/gooey/master/assets/gooey.jpg">
+</p>
 
 Gooey (GUI) is a Pure Go Web UI framework made for stateless HTML in Web Views.
 It bridges the gaps between Go, WebASM, Browser APIs, unified App Layouts and reusable Themes.
