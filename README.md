@@ -1,21 +1,27 @@
 
-# Golem UI
+# Gooey
 
-<img align="right" width="128" height="128" src="https://raw.githubusercontent.com/cookiengineer/golem/master/assets/golem.jpg">
+<img align="center" width="256" height="256" src="https://raw.githubusercontent.com/cookiengineer/gooey/master/assets/gooey.jpg">
 
-Opinionated Web UI framework for Go that is made for stateless HTML in both Web Pages
-and Web Views. It bridges the gap between Go, WebAssembly, and Browser APIs.
+Gooey (GUI) is a Pure Go Web UI framework made for stateless HTML in Web Views.
+It bridges the gaps between Go, WebASM, Browser APIs, unified App Layouts and reusable Themes.
 
 
 # Opinions
 
 **HTML Elements**
 
-- Static elements are never removed from the DOM
+- Static elements can never be removed from the DOM
 - Static elements can have DOM event listeners
-- Elements with an `id` property are static elements
+- Static elements always have an `id` property
 - Dynamic elements can be removed from the DOM
 - Dynamic elements cannot have DOM event listeners
+
+**App Layout**
+
+- App Layout always consists of `header`, `main`, and `footer` elements
+- App Views are represented by different `main > section[data-view=...]` elements
+- App Views can contain `aside` elements representing the sidebar
 
 **Web Forms**
 
@@ -76,19 +82,6 @@ and Web Views. It bridges the gap between Go, WebAssembly, and Browser APIs.
 - [x] [timers/SetTimeout](/source/timers/SetTimeout.go)
 
 [1] This feature is implemented, but not supported across all Browsers. It is disabled to prevent WebASM runtime errors that are irrecoverable.
-
-
-# Layouts
-
-- [ ] fixed content, single sidebar
-- [ ] scroll content, single sidebar
-- [ ] fixed content, dual sidebar
-- [ ] scroll content, dual sidebar
-
-
-# Usage
-
-TBD
 
 
 # License
