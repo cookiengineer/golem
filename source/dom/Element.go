@@ -231,6 +231,21 @@ func (element *Element) HasAttribute(name string) bool {
 
 }
 
+func (element *Element) GetBoundingClientRect() *Rect {
+
+	var result *Rect = nil
+
+	value := element.Value.Call("getBoundingClientRect")
+
+	if !value.IsNull() && !value.IsUndefined() {
+		rect := ToRect(value)
+		result = &rect
+	}
+
+	return result
+
+}
+
 func (element *Element) QuerySelector(query string) *Element {
 
 	var result *Element = nil
