@@ -223,6 +223,26 @@ func (element *Element) HasAttribute(name string) bool {
 
 }
 
+func (element *Element) RemoveAttribute(name string) bool {
+
+	var result bool = false
+
+	check := validateXMLName(name)
+
+	if check == nil {
+
+		tmp := element.Value.Call("removeAttribute", name)
+
+		if tmp.Truthy() {
+			result = true
+		}
+
+	}
+
+	return result
+
+}
+
 func (element *Element) GetBoundingClientRect() *Rect {
 
 	var result *Rect = nil

@@ -22,7 +22,7 @@ func (dialog *Dialog) Open() bool {
 
 	if dialog.Element != nil {
 
-		dialog.Element.Value.Call("showModal")
+		dialog.Element.SetAttribute("open", "")
 
 		if dialog.Element.HasAttribute("open") {
 			result = true
@@ -40,7 +40,7 @@ func (dialog *Dialog) Close() bool {
 
 	if dialog.Element != nil {
 
-		dialog.Element.Value.Call("close")
+		dialog.Element.RemoveAttribute("open")
 
 		if dialog.Element.HasAttribute("open") == false {
 			result = true
