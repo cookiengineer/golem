@@ -119,6 +119,28 @@ Fetch RequestInit Properties:
     hangs when using this, use the synchronous XMLHttpRequest APIs instead.
 
 
+## Work-in-Progress
+
+Currently, this library is in a working state, but also a bit experimental due to the nature of
+upstream WebASM support quirks. There's a separate [TODO.md](/TODO.md) that tries to reflect what
+is not working yet and what is being implemented in the future.
+
+
+## Examples
+
+There's the [examples](/examples) folder that contains small test projects that you can use
+to find out how APIs work in detail. They are similar to unit tests in nature, because `go test`
+cannot generate binaries for the `syscall/js` platform.
+
+
+## Projects
+
+These are the Projects using `gooey` as a library. This list is meant to showcase how to use the
+library, how to integrate it into your workflow, and how to integrate it with [webview/webview_go](https://github.com/webview/webview_go).
+
+- [Git Evac](https://github.com/cookiengineer/git-evac), a Git Management Tool
+
+
 # License
 
 This project is licensed under the [MIT](./LICENSE_MIT.txt) license.
