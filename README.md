@@ -17,7 +17,7 @@ It bridges the gaps between Go, WebASM, Browser APIs, unified App Layouts and re
 - Static elements can have DOM event listeners
 - Static elements always have an `id` property
 - Dynamic elements can be removed from the DOM
-- Dynamic elements cannot have DOM event listeners
+- Dynamic elements should not have DOM event listeners
 
 **App Layout**
 
