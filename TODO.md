@@ -1,6 +1,13 @@
 
 # TODO
 
+[Fetch API](https://developer.mozilla.org/en-US/docs/Web/API/Window/fetch)
+
+- [ ] Currently upstream `chan` support seems broken, and it always hangs when using `go` compiler.
+      The code works in `tinygo` so it's being kept for now, as it will have async behavior as
+      expected from `fetch()` calls.
+
+
 [Navigator Object](https://html.spec.whatwg.org/multipage/system-state.html#the-navigator-object):
 
 - Navigator

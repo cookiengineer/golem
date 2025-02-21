@@ -60,6 +60,25 @@ It bridges the gaps between Go, WebASM, Browser APIs, unified App Layouts and re
 - [x] [dom/EventPhase](/source/dom/EventPhase.go)
 - [x] [dom/EventType](/source/dom/EventType.go)
 
+**fetch**
+
+Note: If you run into problems, use the [Synchronous XMLHttpRequest](/source/xhr/XMLHttpRequest_sync.go) APIs instead.
+
+- [x] [fetch/Fetch](/source/fetch/Fetch.go) [2]
+- [x] [fetch/Headers](/source/fetch/Headers.go)
+- [x] [fetch/Request](/source/fetch/Request.go) (or `RequestInit` object)
+- [x] [fetch/Response](/source/fetch/Response.go)
+
+Fetch RequestInit Properties:
+
+- [x] [fetch/Cache](/source/fetch/Cache.go)
+- [x] [fetch/Credentials](/source/fetch/Credentials.go)
+- [x] [fetch/Method](/source/fetch/Method.go)
+- [x] [fetch/Mode](/source/fetch/Mode.go)
+- [x] [fetch/Redirect](/source/fetch/Redirect.go)
+- [x] `Referrer` has to be a `string` due to arbitrary URL values.
+- [x] [fetch/ReferrerPolicy](/source/fetch/ReferrerPolicy.go)
+
 **location**
 
 - [x] [location/Location](/source/location/Location.go)
@@ -83,9 +102,22 @@ It bridges the gaps between Go, WebASM, Browser APIs, unified App Layouts and re
 - [x] [timers/SetInterval](/source/timers/SetInterval.go)
 - [x] [timers/SetTimeout](/source/timers/SetTimeout.go)
 
+**xhr**
+
+- [x] [xhr/Method](/source/xhr/Method.go)
+- [x] [xhr/XMLHttpRequest](/source/xhr/XMLHttpRequest.go) [2]
+- [x] Synchronous [xhr/XMLHttpRequest](/source/xhr/XMLHttpRequest_sync.go)
+
+
+--------
+
 [1] This feature is implemented, but not supported across all Browsers. It is disabled to prevent WebASM runtime errors that are irrecoverable.
+
+[2] This feature is implemented asynchronously and uses a go `chan`. It only works with `tinygo` as a compiler as of now. If your WebASM binary
+    hangs when using this, use the synchronous XMLHttpRequest APIs instead.
 
 
 # License
 
-MIT
+This project is licensed under the [MIT](./LICENSE_MIT.txt) license.
+

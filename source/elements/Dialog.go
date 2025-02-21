@@ -6,13 +6,11 @@ type Dialog struct {
 	Element *dom.Element `json:"element"`
 }
 
-func ToDialog(value js.Value) Dialog {
+func ToDialog(element *dom.Element) Dialog {
 
 	var dialog Dialog
 
-	element := dom.ToElement(value)
-
-	dialog.Element = &element
+	dialog.Element = element
 
 	return dialog
 
@@ -24,7 +22,7 @@ func (dialog *Dialog) Open() bool {
 
 	if dialog.Element != nil {
 
-		dialog.Element.Element.Value.Call("showModal")
+		dialog.Element.Value.Call("showModal")
 
 		if dialog.Element.HasAttribute("open") {
 			result = true
@@ -36,13 +34,13 @@ func (dialog *Dialog) Open() bool {
 
 }
 
-func (dialog *Dialog) Close() {
+func (dialog *Dialog) Close() bool {
 
 	var result bool = false
 
 	if dialog.Element != nil {
 
-		dialog.Element.Element.Value.Call("close")
+		dialog.Element.Value.Call("close")
 
 		if dialog.Element.HasAttribute("open") == false {
 			result = true

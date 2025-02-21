@@ -37,42 +37,38 @@ func (element *Element) AddEventListener(typ EventType, listener EventListener) 
 
 	var result bool = false
 
-	if element.Id != "" {
+	wrapped_type := js.ValueOf(string(typ))
+	wrapped_callback := js.FuncOf(func(this js.Value, args []js.Value) any {
 
-		wrapped_type := js.ValueOf(string(typ))
-		wrapped_callback := js.FuncOf(func(this js.Value, args []js.Value) any {
+		if len(args) > 0 {
 
-			if len(args) > 0 {
+			event := args[0]
 
-				event := args[0]
+			if !event.IsNull() && !event.IsUndefined() {
 
-				if !event.IsNull() && !event.IsUndefined() {
-
-					wrapped_event := ToEvent(event)
-					listener.Callback(wrapped_event)
-
-				}
+				wrapped_event := ToEvent(event)
+				listener.Callback(wrapped_event)
 
 			}
 
-			return nil
-
-		})
-		wrapped_capture := js.ValueOf(true)
-
-		element.Value.Call("addEventListener", wrapped_type, wrapped_callback, wrapped_capture)
-
-		_, ok := element.listeners[typ]
-
-		if ok == true {
-			element.listeners[typ] = append(element.listeners[typ], &listener)
-			result = true
-		} else {
-			element.listeners[typ] = make([]*EventListener, 0)
-			element.listeners[typ] = append(element.listeners[typ], &listener)
-			result = true
 		}
 
+		return nil
+
+	})
+	wrapped_capture := js.ValueOf(true)
+
+	element.Value.Call("addEventListener", wrapped_type, wrapped_callback, wrapped_capture)
+
+	_, ok := element.listeners[typ]
+
+	if ok == true {
+		element.listeners[typ] = append(element.listeners[typ], &listener)
+		result = true
+	} else {
+		element.listeners[typ] = make([]*EventListener, 0)
+		element.listeners[typ] = append(element.listeners[typ], &listener)
+		result = true
 	}
 
 	return result
@@ -83,62 +79,58 @@ func (element *Element) RemoveEventListener(typ EventType, listener *EventListen
 
 	var result bool = false
 
-	if element.Id != "" {
+	if listener != nil {
 
-		if listener != nil {
+		listeners, ok := element.listeners[typ]
 
-			listeners, ok := element.listeners[typ]
+		if ok == true {
 
-			if ok == true {
+			var index int = -1
 
-				var index int = -1
+			for l := 0; l < len(listeners); l++ {
 
-				for l := 0; l < len(listeners); l++ {
-
-					if listeners[l].Id == listener.Id {
-						index = l
-						break
-					}
-
-				}
-
-				if index != -1 {
-
-					listener := listeners[index]
-					wrapped_type := js.ValueOf(string(typ))
-					wrapped_callback := *listener.Function
-					wrapped_capture := js.ValueOf(true)
-					element.Value.Call("removeEventListener", wrapped_type, wrapped_callback, wrapped_capture)
-
-					element.listeners[typ] = append(element.listeners[typ][:index], element.listeners[typ][index+1:]...)
-
-					result = true
-
+				if listeners[l].Id == listener.Id {
+					index = l
+					break
 				}
 
 			}
 
-		} else {
+			if index != -1 {
 
-			listeners, ok := element.listeners[typ]
+				listener := listeners[index]
+				wrapped_type := js.ValueOf(string(typ))
+				wrapped_callback := *listener.Function
+				wrapped_capture := js.ValueOf(true)
+				element.Value.Call("removeEventListener", wrapped_type, wrapped_callback, wrapped_capture)
 
-			if ok == true {
-
-				for l := 0; l < len(listeners); l++ {
-
-					listener := listeners[l]
-					wrapped_type := js.ValueOf(string(typ))
-					wrapped_callback := *listener.Function
-					wrapped_capture := js.ValueOf(true)
-					element.Value.Call("removeEventListener", wrapped_type, wrapped_callback, wrapped_capture)
-
-				}
-
-				delete(element.listeners, typ)
+				element.listeners[typ] = append(element.listeners[typ][:index], element.listeners[typ][index+1:]...)
 
 				result = true
 
 			}
+
+		}
+
+	} else {
+
+		listeners, ok := element.listeners[typ]
+
+		if ok == true {
+
+			for l := 0; l < len(listeners); l++ {
+
+				listener := listeners[l]
+				wrapped_type := js.ValueOf(string(typ))
+				wrapped_callback := *listener.Function
+				wrapped_capture := js.ValueOf(true)
+				element.Value.Call("removeEventListener", wrapped_type, wrapped_callback, wrapped_capture)
+
+			}
+
+			delete(element.listeners, typ)
+
+			result = true
 
 		}
 
@@ -240,6 +232,21 @@ func (element *Element) GetBoundingClientRect() *Rect {
 	if !value.IsNull() && !value.IsUndefined() {
 		rect := ToRect(value)
 		result = &rect
+	}
+
+	return result
+
+}
+
+func (element *Element) ParentNode() *Element {
+
+	var result *Element = nil
+
+	value := element.Value.Get("parentNode")
+
+	if !value.IsNull() && !value.IsUndefined() {
+		parent := ToElement(value)
+		result = &parent
 	}
 
 	return result
