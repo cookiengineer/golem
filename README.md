@@ -25,19 +25,21 @@ It bridges the gaps between Go, WebASM, Browser APIs, unified App Layouts and re
 - App Views are represented by different `main > section[data-view=...]` elements
 - App Views can contain `aside` elements representing the sidebar
 
+**Web Clients**
+
+- Web Clients are REST API clients using either [fetch](/source/fetch) or [xhr](/source/xhr)
+- Web Clients are fulfill an `interface` with `Validate() bool, err`
+- Web Clients are routable via a `map[URL]struct` for each supported route
+
 **Web Forms**
+
+Note: This is currently work-in-progress
 
 - Web Forms are static elements
 - Web Forms with `enctype="application/json"` use a REST compatible API endpoint
 - Web Forms with an `action` URL are automatically validateable
 - Web Forms are serializable via `json.Marshal()` into a `struct`
-- Web Forms are validateable via an `interface` with `Validate() bool, err`
-
-**Web Clients**
-
-- Web Clients are REST API clients
-- Web Clients are validateable via an `interface` with `Validate() bool, err`
-- Web Clients are routable via a `map[URL]struct` for each supported route
+- Web Forms are fulfill an `interface` with `Validate() bool, err`
 
 
 # Bindings

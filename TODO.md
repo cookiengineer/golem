@@ -1,12 +1,18 @@
 
 # TODO
 
+## Bindings
+
+### Fetch API
+
 [Fetch API](https://developer.mozilla.org/en-US/docs/Web/API/Window/fetch)
 
 - [ ] Currently upstream `chan` support seems broken, and it always hangs when using `go` compiler.
       The code works in `tinygo` so it's being kept for now, as it will have async behavior as
       expected from `fetch()` calls.
 
+
+### Navigator API
 
 [Navigator Object](https://html.spec.whatwg.org/multipage/system-state.html#the-navigator-object):
 
@@ -22,7 +28,8 @@
 - [VirtualKeyBoard API](https://developer.mozilla.org/en-US/docs/Web/API/Navigator/virtualKeyboard)
 - [Vibration API](https://developer.mozilla.org/en-US/docs/Web/API/Navigator/vibrate)
 
-=========
+
+### History API
 
 [History API](https://html.spec.whatwg.org/multipage/nav-history-apis.html#the-history-interface):
 
@@ -32,6 +39,9 @@
 - [ ] Go()
 - [ ] PushState()
 - [ ] ReplaceState()
+
+
+### Canvas API
 
 - [ ] canvas/Canvas
 - [ ] canvas/CanvasRenderingContext2D
@@ -44,14 +54,16 @@
 - [ ] canvas/OffscreenCanvasRenderingContext2D
 - [ ] canvas/ImageBitmapRenderingContext
 
-=========
+
+### Encoding API
 
 [Encoders and Decoders](https://encoding.spec.whatwg.org/#encoders-and-decoders):
 
 - [ ] encoding/TextDecoder
 - [ ] encoding/TextEncoder
 
-=========
+
+### Crypto API
 
 [Web Crypto API](https://developer.mozilla.org/en-US/docs/Web/API/Web_Crypto_API)
 
@@ -60,7 +72,7 @@
 - [ ] CryptoKey
 - [ ] CryptoKeyPair
 
-Crypto Dictionaries
+Crypto Dictionaries:
 
 - [ ] AesCbcParams
 - [ ] AesCtrParams
@@ -82,14 +94,17 @@ Crypto Dictionaries
 - [ ] RsaPssParams
 
 
-=========
+### Web Forms API
 
-Web Forms:
+- [ ] xhr/FormData interface?
+- [ ] fetch/FormData interface?
 
-- [ ] forms/Button
-- [ ] forms/FormData
-- [ ] forms/Input
-- [ ] forms/Option
-- [ ] forms/Select
-- [ ] forms/Textarea
+Web Form Elements:
+
+- [ ] elements/forms/Button
+- [ ] elements/forms/Form (that can generate FormData)
+- [ ] elements/forms/Input
+- [ ] elements/forms/Option
+- [ ] elements/forms/Select
+- [ ] elements/forms/Textarea
 
