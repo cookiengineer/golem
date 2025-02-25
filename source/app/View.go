@@ -7,7 +7,7 @@ type View interface {
 	GetElement(string) *dom.Element
 	SetElement(string, *dom.Element)
 	RemoveElement(string) bool
-	Enter(any) bool
-	Leave(any) bool
+	Enter() bool
+	Leave() bool
 }
 

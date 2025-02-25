@@ -12,11 +12,11 @@ func (view BaseView) Init() {
 
 }
 
-func (view BaseView) Enter(data any) bool {
+func (view BaseView) Enter() bool {
 	return true
 }
 
-func (view BaseView) Leave(data any) bool {
+func (view BaseView) Leave() bool {
 	return true
 }
 
