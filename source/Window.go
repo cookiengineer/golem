@@ -20,46 +20,52 @@ type window struct {
 
 func init() {
 
-	win := js.Global().Get("window")
-	scr := win.Get("screen")
-	ori := scr.Get("orientation")
+	window_value := js.Global().Get("window")
+	screen_value := window_value.Get("screen")
+	screen_orientation := ScreenOrientation{}
 
-	screen_orientation := ScreenOrientation{
-		Angle: uint(ori.Get("angle").Int()),
-		Type:  ori.Get("type").String(),
+	orientation := screen_value.Get("orientation")
+
+	if !orientation.IsNull() && !orientation.IsUndefined() {
+
+		screen_orientation = ScreenOrientation{
+			Angle: uint(orientation.Get("angle").Int()),
+			Type:  orientation.Get("type").String(),
+		}
+
 	}
 
 	screen := Screen{
 		listeners:   make(map[dom.EventType][]*dom.EventListener),
-		Width:       uint(scr.Get("width").Int()),
-		Height:      uint(scr.Get("height").Int()),
-		AvailWidth:  uint(scr.Get("availWidth").Int()),
-		AvailHeight: uint(scr.Get("availHeight").Int()),
-		ColorDepth:  uint(scr.Get("colorDepth").Int()),
-		PixelDepth:  uint(scr.Get("pixelDepth").Int()),
+		Width:       uint(screen_value.Get("width").Int()),
+		Height:      uint(screen_value.Get("height").Int()),
+		AvailWidth:  uint(screen_value.Get("availWidth").Int()),
+		AvailHeight: uint(screen_value.Get("availHeight").Int()),
+		ColorDepth:  uint(screen_value.Get("colorDepth").Int()),
+		PixelDepth:  uint(screen_value.Get("pixelDepth").Int()),
 		IsExtended:  false,
 		Orientation: &screen_orientation,
-		Value:       &scr,
+		Value:       &screen_value,
 	}
 
 	// Firefox doesn't expose this in Tracking Protection Mode
-	screen_isextended := scr.Get("isExtended")
+	screen_isextended := screen_value.Get("isExtended")
 
-	if !screen_isextended.IsUndefined() {
+	if !screen_isextended.IsNull() && !screen_isextended.IsUndefined() {
 		screen.IsExtended = screen_isextended.Bool()
 	}
 
 	Window = window{
 		listeners:   make(map[dom.EventType][]*dom.EventListener),
-		Closed:      win.Get("closed").Bool(),
-		InnerWidth:  uint(win.Get("innerWidth").Int()),
-		InnerHeight: uint(win.Get("innerHeight").Int()),
-		OuterWidth:  uint(win.Get("outerWidth").Int()),
-		OuterHeight: uint(win.Get("outerHeight").Int()),
+		Closed:      window_value.Get("closed").Bool(),
+		InnerWidth:  uint(window_value.Get("innerWidth").Int()),
+		InnerHeight: uint(window_value.Get("innerHeight").Int()),
+		OuterWidth:  uint(window_value.Get("outerWidth").Int()),
+		OuterHeight: uint(window_value.Get("outerHeight").Int()),
 		Screen:      &screen,
-		ScrollX:     uint(win.Get("scrollX").Int()),
-		ScrollY:     uint(win.Get("scrollY").Int()),
-		Value:       &win,
+		ScrollX:     uint(window_value.Get("scrollX").Int()),
+		ScrollY:     uint(window_value.Get("scrollY").Int()),
+		Value:       &window_value,
 	}
 
 	Window.Value.Call("addEventListener", "resize", js.FuncOf(func(this js.Value, args []js.Value) any {
@@ -82,14 +88,18 @@ func init() {
 
 	}))
 
-	Window.Screen.Value.Call("addEventListener", "change", js.FuncOf(func(this js.Value, args []js.Value) any {
+	if !orientation.IsNull() && !orientation.IsUndefined() {
 
-		Window.Screen.Orientation.Angle = uint(ori.Get("angle").Int())
-		Window.Screen.Orientation.Type = ori.Get("type").String()
+		Window.Screen.Value.Call("addEventListener", "change", js.FuncOf(func(this js.Value, args []js.Value) any {
 
-		return nil
+			Window.Screen.Orientation.Angle = uint(orientation.Get("angle").Int())
+			Window.Screen.Orientation.Type = orientation.Get("type").String()
 
-	}))
+			return nil
+
+		}))
+
+	}
 
 }
 
