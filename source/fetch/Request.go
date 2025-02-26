@@ -19,9 +19,9 @@ type Request struct {
 }
 
 
-func (request *Request) MapToJS() map[string]interface{} {
+func (request *Request) MapToJS() map[string]any {
 
-	mapped := make(map[string]interface{})
+	mapped := make(map[string]any)
 
 	if tmp := request.Method.String(); tmp != "" {
 		mapped["method"] = request.Method.String()
@@ -29,7 +29,7 @@ func (request *Request) MapToJS() map[string]interface{} {
 
 	if len(request.Headers) > 0 {
 
-		mapped_headers := make(map[string]interface{})
+		mapped_headers := make(map[string]any)
 
 		for key, val := range request.Headers {
 			mapped_headers[key] = val
