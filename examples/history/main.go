@@ -7,9 +7,18 @@ import "gooey/location"
 import "gooey/timers"
 import "time"
 
+// Customizable History States
+type HistoryState struct {
+	Category uint `json:"category"`
+	Page     int  `json:"page"`
+}
+
 func main() {
 
 	element := gooey.Document.QuerySelector("#location")
+
+	history.History.PushState(history.State{
+	})
 
 	// TODO: Call history.PushState()
 	// TODO: Call history.PopState()
